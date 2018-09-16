@@ -9,12 +9,13 @@ public class CacheUnitService<T> {
 	private static final int CAPACITY = 2;
 
 	private LRUAlgoCacheImpl<Long, DataModel<T>> algo = new LRUAlgoCacheImpl<Long, DataModel<T>>(CAPACITY);
-	private CacheUnit<T> Cache = new CacheUnit<T>(algo);
-	private IDao<Long, T> IDao;
-	private Long[] fromCache = new Long[CAPACITY];
+	private CacheUnit<T> cache = new CacheUnit<T>(algo);
+	private IDao<Long, T> idao;
+	private DataModel<T>[] fromCache = new DataModel[CAPACITY];
 
 	public boolean update(DataModel<T>[] dataModels) {
-		return true;
+		
+		return false;
 	}
 
 	public boolean delete(DataModel<T>[] dataModels) {
@@ -22,11 +23,13 @@ public class CacheUnitService<T> {
 	}
 
 	public DataModel<T>[] get(DataModel<T>[] dataModels) {
-		return Cache.getDataModels(fromCache);
+		return fromCache;
 	}
 
-	private boolean findInCache(DataModel<T>[] dataModels) {
+	private boolean findInCache(Long[] dataModels) {
 		boolean isFound = false;
+		fromCache = cache.getDataModels(dataModels);
+
 		return isFound;
 	}
 }

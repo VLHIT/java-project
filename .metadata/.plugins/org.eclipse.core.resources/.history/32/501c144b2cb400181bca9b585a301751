@@ -1,5 +1,0 @@
-package com.hit.server;
-
-public class Server extends Object implements PropertyChangeListener, Runnable{
-	
-}

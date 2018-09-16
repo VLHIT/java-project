@@ -1,9 +1,0 @@
-package com.hit.services;
-
-import com.hit.dm.DataModel;
-
-public class CacheUnitController<T> extends Object{
-	public boolean update(DataModel<T>[] dataModels) {
-		
-	}
-}

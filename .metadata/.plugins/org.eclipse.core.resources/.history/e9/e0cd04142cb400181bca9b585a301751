@@ -1,5 +1,0 @@
-package com.hit.services;
-
-public class CacheUnitController<T> extends Object{
-	
-}
