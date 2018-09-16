@@ -1,0 +1,7 @@
+package com.hit.server;
+
+import java.io.Serializable;
+
+public class Request<T> extends Object implements Serializable{
+	
+}

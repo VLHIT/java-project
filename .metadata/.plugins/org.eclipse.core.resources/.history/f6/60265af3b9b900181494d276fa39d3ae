@@ -1,0 +1,27 @@
+package com.hit.server;
+
+import java.net.Socket;
+
+import com.google.gson.Gson;
+import com.hit.services.CacheUnitController;
+
+public class HandleRequest<T> implements Runnable {
+
+	private Socket socket;
+	private CacheUnitController<T> cacheUnitController;
+	private Gson gson;
+
+	public HandleRequest(Socket s, CacheUnitController<T> controller) {
+		this.socket = s;
+		this.cacheUnitController = controller;
+		this.gson = new Gson();
+	}
+
+	@Override
+	public void run() {
+		while (true) {
+			
+		}
+	}
+
+}

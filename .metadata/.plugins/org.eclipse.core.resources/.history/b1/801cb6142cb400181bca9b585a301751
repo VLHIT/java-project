@@ -1,0 +1,7 @@
+package com.hit.services;
+
+public class CacheUnitController<T> extends Object{
+	public boolean update(DataModel<T>[] dataModels) {
+		
+	}
+}

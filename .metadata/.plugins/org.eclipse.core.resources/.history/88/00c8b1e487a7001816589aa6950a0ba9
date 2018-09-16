@@ -1,0 +1,31 @@
+package com.hit.server;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		ServerSocket server=new ServerSocket(12345);
+		Socket ClientSocket = server.accept();
+
+		
+		ObjectOutputStream output=new ObjectOutputStream(ClientSocket.getOutputStream());
+		ObjectInputStream input=new ObjectInputStream(ClientSocket.getInputStream());
+		String messageIn=(String)input.readObject();
+		System.out.println("message from the client: "+messageIn);
+		if(messageIn == "Hi") {
+			output.writeObject("Bye");
+			output.flush();
+		}
+
+		output.close();
+		input.close();
+		ClientSocket.close();
+	}
+
+}

@@ -1,0 +1,30 @@
+package com.hit.server;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		
+		
+		ServerSocket ServerSocket = new ServerSocket(12345);
+		Socket clientSocket = ServerSocket.accept();
+
+		
+		PrintWriter output = new PrintWriter(clientSocket.getOutputStream());
+		PrintWriter input = new PrintWriter(clientSocket.getInputStream());
+		
+		if(input.toString() == "Hi") {
+			output.write("bye");
+		}
+		
+		output.close();
+		input.close();
+		ServerSocket.close();
+	}
+
+}

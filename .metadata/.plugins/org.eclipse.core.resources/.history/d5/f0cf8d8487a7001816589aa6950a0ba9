@@ -1,0 +1,24 @@
+package com.hit.Client;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class Client {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		InetAddress address = InetAddress.getLocalHost();
+		Socket HostSocket = new Socket(address, 12345);
+		
+		PrintWriter output = new PrintWriter(HostSocket.getOutputStream());
+		PrintWriter input = new PrintWriter(HostSocket.getInputStream());
+		
+		output.write("Hi");
+		
+		input.
+	}
+
+}

@@ -1,0 +1,33 @@
+package com.hit.server;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class Server {
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		ServerSocket server=new ServerSocket(12345);
+		Socket ClientSocket = server.accept();
+		String messageIn;
+		boolean isRunning = true;
+		
+		ObjectOutputStream output=new ObjectOutputStream(ClientSocket.getOutputStream());
+		ObjectInputStream input=new ObjectInputStream(ClientSocket.getInputStream());
+		while(isRunning){
+			messageIn = (String)input.readObject();
+			System.out.println("message from the client: " + messageIn);
+			output.writeObject("Bye " + messageIn);
+			output.flush();
+			isRunning = false;
+		}
+		
+		output.close();
+		input.close();
+		ClientSocket.close();
+	}
+
+}

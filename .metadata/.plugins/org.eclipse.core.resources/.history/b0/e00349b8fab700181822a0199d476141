@@ -1,0 +1,39 @@
+package com.hit.server;
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+import com.hit.services.CacheUnitController;
+
+public class Server implements PropertyChangeListener, Runnable {
+
+	private static final int SERVER = 12345;
+	
+	private Thread thread;
+	private String propertyName;
+
+	@Override
+	public void run() {
+		try (ServerSocket listener = new ServerSocket(SERVER)) {
+			while (true) {
+				Socket client = listener.accept();
+				HandleRequest<Request> request = new HandleRequest<Request>(client, new CacheUnitController<Request>());
+				System.out.println("New client connected.");
+				thread = new Thread(request);
+			}
+		} catch (IOException e) {
+			System.out.println("Cannot connect.");
+		} catch (Exception e) {
+			System.out.println("Some error occured.");
+		}
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		propertyName = evt.getPropertyName();
+	}
+
+}
