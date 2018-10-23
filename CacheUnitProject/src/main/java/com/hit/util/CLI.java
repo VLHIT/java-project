@@ -55,6 +55,7 @@ public class CLI extends Observable implements Runnable {
 
 	public void removePropertyChangeListener(PropertyChangeListener pcl) {
 		support.removePropertyChangeListener(pcl);
+		listener.add(pcl);
 	}
 
 	public void write(String string) {
@@ -69,24 +70,24 @@ public class CLI extends Observable implements Runnable {
 	public void run() {
 		while (true) {
 			String tempString = null;
-			write("Please enter your command: ");
+			write("CLI: Please enter your command: ");
 			tempString = scan.next();
 			if (isLegalOperation(tempString)) {
 				if (!tempString.equals(SHUTDOWN)) {
 					try {
 						if (tempString.equals(START) && !SERVER_STATUS.equals("start")) {
 							SERVER_STATUS = START;
-							Socket mySocket = new Socket(address, 12345);
+							//Socket mySocket = new Socket(address, 12345);
 							for (PropertyChangeListener listener : listener) {
 								if (listener instanceof Server) {
 									support.firePropertyChange(SERVER_STATUS, "not started", START);
 									new Thread((Server) listener).start();
 								}
 							}
-							write("Strarting server...\n");
+							write("CLI: Strarting server...\n");
 						}
 					} catch (Exception e) {
-						System.out.println("Failed to start\n");
+						System.out.println("CLI: Failed to start\n");
 					}
 				} else {
 					for (PropertyChangeListener listener : listener) {
@@ -94,11 +95,11 @@ public class CLI extends Observable implements Runnable {
 							support.firePropertyChange(SERVER_STATUS, SERVER_STATUS, SHUTDOWN);
 						}
 					}
-					write("Shutdown server\n");
-
+					write("CLI: Shutdown server\n");
+					SERVER_STATUS = SHUTDOWN;
 				}
 			} else {
-				write("Not valid command\n");
+				write("CLI: Not valid command\n");
 			}
 		}
 	}

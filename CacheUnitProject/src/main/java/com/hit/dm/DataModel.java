@@ -27,7 +27,7 @@ public class DataModel<T> implements Serializable {
 
 	@Override
 	public String toString() {
-		return ("Id: " + id + "," + "Content: " + content);
+		return ("Id: " + id + "\n" + "Content: " + content + "\n");
 	}
 
 	public Long getDataModelId() {

@@ -25,10 +25,12 @@ public class DaoFileImpl<T> implements IDao<Long, DataModel<T>> {
 	private FileInputStream inputStream = null;
 	private FileOutputStream outputStream = null;
 	private Map<Long, T> FileContent = new HashMap<Long, T>();
+	private int totalNumberOfDataModels;
 
 	public DaoFileImpl(String filePath) {
 		this.filePath = filePath;
 		this.capacity = DEFAULT_CAPACITY;
+		this.totalNumberOfDataModels = 0;
 	}
 
 	public DaoFileImpl(String filePath, int capacity) {
@@ -49,7 +51,7 @@ public class DaoFileImpl<T> implements IDao<Long, DataModel<T>> {
 		} catch (FileNotFoundException ex) {
 			System.out.println("Error, cannot find the file.");
 		} catch (IOException ex) {
-			System.out.println("Error, cannot read " + filePath + "file.");
+			System.out.println("Error, cannot read " + filePath + " file, " + "or file is empty");
 		} catch (Exception ex) {
 			System.out.println("Error occured.");
 		}
@@ -87,6 +89,23 @@ public class DaoFileImpl<T> implements IDao<Long, DataModel<T>> {
 			System.out.println("Error occured.");
 		}
 		return dataModel;
+	}
+
+	public int countAll() {
+		totalNumberOfDataModels = 0;
+		try {
+			ReadWriteFile(FileContent, filePath, READ);
+			for (Long key : FileContent.keySet()) {
+				totalNumberOfDataModels++;
+			}
+		} catch (FileNotFoundException ex) {
+			System.out.println("Error, cannot find the file.");
+		} catch (IOException ex) {
+			System.out.println("Error, cannot read " + filePath + "file.");
+		} catch (Exception ex) {
+			System.out.println("Error occured.");
+		}
+		return totalNumberOfDataModels;
 	}
 
 	private <K, V> void ReadWriteFile(Map<K, V> map, String filePath, int IO) throws IOException {

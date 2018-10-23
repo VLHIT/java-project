@@ -1,0 +1,5 @@
+Capacity: 2
+Algorithm: LRU
+Total_number_of_requests: 1
+Total_number_of_data_models: 3
+Total_number_of_swaps: 3

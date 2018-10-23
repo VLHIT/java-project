@@ -13,7 +13,7 @@ public class CacheUnit<T> {
 	}
 
 	public DataModel<T>[] getDataModels(Long[] ids) {
-		DataModel<T> temp;
+		DataModel<T> temp = new DataModel((long) 0, null);
 		int counter = 0;
 		DataModel<T>[] DataModelArray = new DataModel[ids.length];
 		for (long id : ids) {
