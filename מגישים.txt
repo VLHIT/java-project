@@ -1,5 +1,0 @@
-Name: Vadim Lakhterman
-ID: 320414675
-
-Name: Simone Weiss
-ID: 309823011
