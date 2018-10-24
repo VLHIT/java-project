@@ -29,7 +29,6 @@
 <fullyQualifiedTypeName name="com.hit.client.CacheUnitClient"/>
 <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthTextAreaUI"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
-<fullyQualifiedTypeName name="com.hit.memory.CacheUnit"/>
 <fullyQualifiedTypeName name="com.hit.dao.IDao"/>
 <fullyQualifiedTypeName name="com.hit.dao.DaoFileImpl"/>
 <fullyQualifiedTypeName name="com.hit.algorithm.LRUAlgoCacheImpl"/>
@@ -57,7 +56,8 @@
 <fullyQualifiedTypeName name="java.awt.Dimension"/>
 <fullyQualifiedTypeName name="java.awt.Frame"/>
 <fullyQualifiedTypeName name="javax.swing.ScrollPaneConstants"/>
-<fullyQualifiedTypeName name="com.hit.dm.DataModel"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="java.awt.Toolkit"/>
+<fullyQualifiedTypeName name="com.hit.dm.DataModel"/>
+<fullyQualifiedTypeName name="com.hit.memory.CacheUnit"/>
 </qualifiedTypeNameHistroy>

@@ -27,10 +27,14 @@ public class CacheUnit<T> {
 	}
 
 	public DataModel<T>[] putDataModels(DataModel<T>[] datamodels) {
+		DataModel<T> temp = new DataModel((long) 0, null);
+		DataModel<T>[] DataModelArray = new DataModel[datamodels.length];
+		int counter = 0;
 		for (DataModel<T> data : datamodels) {
-			algo.putElement(data.getDataModelId(), (DataModel<T>) data);
+			temp = algo.putElement(data.getDataModelId(), (DataModel<T>) data);
+			DataModelArray[counter++] = temp;
 		}
-		return datamodels;
+		return DataModelArray;
 	}
 
 	public void removeDataModels(Long[] ids) {

@@ -83,9 +83,9 @@ public class CacheUnitView {
 		frame.pack();
 		frame.setVisible(true);
 		while (true) {
-			System.out.println("UI: waiting");
+			System.out.println("UI: ready");
 			if (PRESSED) {
-				System.out.println("");
+				//System.out.println("");
 				if (PRESSED_BUTTON.equals(LOAD)) {
 					/*
 					 * new file selection window only for request

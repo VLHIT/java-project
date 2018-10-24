@@ -161,7 +161,7 @@ public class CacheUnitService<T> {
 
 	}
 
-	private DataModel<T>[] findInCache(Long[] dataModels) {
+	private synchronized DataModel<T>[] findInCache(Long[] dataModels) {
 		int counter = 0;
 		DataModel<T>[] temp = new DataModel[dataModels.length];
 		temp = cache.getDataModels(dataModels);

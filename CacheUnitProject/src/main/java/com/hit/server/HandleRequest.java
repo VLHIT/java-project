@@ -53,7 +53,7 @@ public class HandleRequest<T> implements Runnable {
 	}
 
 	@Override
-	public synchronized void run() {
+	public void run() {
 		try {
 			this.objectInputStream = new ObjectInputStream(socket.getInputStream());
 			this.objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
